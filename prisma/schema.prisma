@@ -12,3 +12,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Genre {
+  id    Int     @id @default(autoincrement()) // Chave primária com autoincremento
+  name  String  @unique                      // Nome único do gênero
+  movies Movie[]                             // Relacionamento com Movie
+}
+
+model Language {
+  id    Int     @id @default(autoincrement()) // Chave primária com autoincremento
+  name  String  @unique                      // Nome único do idioma
+  movies Movie[]                             // Relacionamento com Movie
+}
+
+model Movie {
+  id          Int      @id @default(autoincrement()) // Chave primária com autoincremento
+  title       String                                 // Título do filme
+  release_date DateTime                               // Data de lançamento
+  genre_id     Int                                    // FK para Genre
+  language_id  Int                                    // FK para Language
+  oscar_count  Int?                                   // Quantidade de Oscars (opcional)
+
+  genre    Genre    @relation(fields: [genre_id], references: [id], onDelete: Cascade) // Relacionamento com Genre
+  language Language @relation(fields: [language_id], references: [id], onDelete: Cascade) // Relacionamento com Language
+}

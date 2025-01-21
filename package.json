@@ -1,6 +1,7 @@
 {
   "name": "movieflix-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,6 +23,7 @@
     "typescript-eslint": "^8.20.0"
   },
   "dependencies": {
+    "@prisma/client": "^6.2.1",
     "express": "^4.21.2"
   }
 }
