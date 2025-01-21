@@ -121,6 +121,46 @@
                     }
                 }
             }
+        },
+        "/movies/{genreName}": {
+            "get": {
+                "tags": ["Filmes"],
+                "summary": "Listar filmes de um determinado gênero",
+                "parameters": [
+                    {
+                        "name": "genreName",
+                        "in": "path",
+                        "required": true,
+                        "description": "Nome do gênero dos filmes.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Movie"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FilterError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
 
@@ -239,6 +279,15 @@
                     "message": {
                         "type": "string",
                         "description": "Falha ao deletar filme."
+                    }
+                }
+            },
+            "FilterError": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Falha ao filtrar filmes por gênero."
                     }
                 }
             }
