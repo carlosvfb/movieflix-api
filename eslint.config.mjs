@@ -11,7 +11,7 @@ export default [
             "@stylistic/js": stylisticJs
         },
         rules: {
-            "@stylistic/js/indent": ["error", 4],
+            "@stylistic/js/indent": ["error", 2],
             "@stylistic/js/quotes": ["error", "double"],
             "@stylistic/js/semi": ["error", "always"]
         }
