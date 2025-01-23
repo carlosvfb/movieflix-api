@@ -22,6 +22,8 @@ CREATE TABLE "Movie" (
     "genre_id" INTEGER NOT NULL,
     "language_id" INTEGER NOT NULL,
     "oscar_count" INTEGER,
+    "director" TEXT NOT NULL,
+    "duration" INTEGER NOT NULL,
 
     CONSTRAINT "Movie_pkey" PRIMARY KEY ("id")
 );

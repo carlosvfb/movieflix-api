@@ -26,6 +26,49 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": ["Filmes"],
+                "summary": "Cadastrar um filme",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MovieInput"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Movie"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFound"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostError"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/movies/{id}": {
@@ -122,6 +165,7 @@
                 }
             }
         },
+
         "/movies/{genreName}": {
             "get": {
                 "tags": ["Filmes"],
@@ -261,6 +305,15 @@
                     "message": {
                         "type": "string",
                         "description": "Filme não encontrado."
+                    }
+                }
+            },
+            "PostError": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Falha ao cadastrar filme."
                     }
                 }
             },

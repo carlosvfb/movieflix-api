@@ -32,6 +32,8 @@ model Movie {
   genre_id     Int                                    // FK para Genre
   language_id  Int                                    // FK para Language
   oscar_count  Int?                                   // Quantidade de Oscars (opcional)
+  director    String                                 // Diretor do filme
+  duration    Int
 
   genre    Genre    @relation(fields: [genre_id], references: [id], onDelete: Cascade) // Relacionamento com Genre
   language Language @relation(fields: [language_id], references: [id], onDelete: Cascade) // Relacionamento com Language
